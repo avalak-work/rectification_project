@@ -47,4 +47,7 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
-        script: whoami
+        script: |
+          docker-compose -f /opt/docker/rectification/docker-compose.yml pull
+          docker-compose -f /opt/docker/rectification/docker-compose.yml up -d
+          docker-compose -f /opt/docker/rectification/docker-compose.yml restart
